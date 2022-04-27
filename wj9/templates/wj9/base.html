@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>wj9.io</title>
+    {% endblock title %}
+</head>
+<body>
+    <a href="{% url 'wj9_io:index' %}">wj9.io</a> - 
+    <a href="{% url 'blog:index' %}">wj9.io Blog</a> - 
+    {% if user.is_authenticated %}
+    Hello, {{user.username}}.
+    <a href="{% url 'users:logout' %}">Log out</a>
+    {% else %}
+    <a href="{% url 'users:login' %}">Log in</a>
+    {% endif %}
+    {% block page_header %}
+    {% endblock page_header %}
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>

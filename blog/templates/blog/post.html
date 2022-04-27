@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+<h3>{{post.name}}</h3> - <p>{{post.date_added}}</p>
+{% block content %}
+<p>{{text|linebreaks}}</p>
+<p>Comments: </p>
+{% for comment in comments %}
+<p>{{comment.text|linebreaks}}</p>
+{% endfor %}
+<p>Comment: </p>
+<form action="{% url 'blog:post' post.id %}" method="post" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Add comment</button>
+</form>
+{% endblock content %}

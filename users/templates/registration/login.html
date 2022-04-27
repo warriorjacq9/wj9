@@ -1,0 +1,17 @@
+{% extends 'wj9/base.html' %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username or password are incorrect.</p>
+{% endif %}
+
+<form action="{% url 'users:login' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button name="submit">Log in</button>
+    <input type="hidden" name="next" value="{% url 'wj9_io:index' %}"/>
+</form>
+
+{% endblock content %}
