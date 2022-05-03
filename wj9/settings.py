@@ -128,9 +128,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 import django_heroku
+DEBUG=False
 django_heroku.settings(locals())
-
-if os.environ.get('DEBUG')=='TRUE':
-    DEBUG=True
-else:
-    DEBUG=False
+DEBUG=True

@@ -1,3 +1,5 @@
+{% load bootstrap4 %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,24 +14,41 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-light bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">primary</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
-                aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarID">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    
-                </div>
-            </div>
+    <nav class="navbar navbar-expand-md navbar-light bg-primary mb-4 border">
+        <a class="navbar-brand" href="{% url 'wj9_io:index' %}">wj9.io</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
+            aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarID">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'blog:index' %}">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="navbar-text">Hello, <strong>{{user.username}}</strong>!</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'users:logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'users:login' %}">Log in</a>
+                    </li>
+                    {% endif %}
+                </ul>
         </div>
     </nav>
-    {% block page_header %}
-    {% endblock page_header %}
-    {% block content %}
-    {% endblock content %}
+    <main role="main" class="container">
+        <div class="pb-2 mb-2 border-bottom">
+            {% block page_header %}{% endblock page_header %}
+        </div>
+        <div>
+            {% block content %}{% endblock content %}
+        </div>
+    </main>
 </body>
 </html>
