@@ -28,3 +28,12 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
+    - name: Git HTTPS push deploy
+      # You may pin to the exact commit or the version.
+      # uses: ilkka/git-https-push-action@2ec0269dfc83018e42793e693cb114f897154e4b
+      uses: ilkka/git-https-push-action@v1.1.0
+      with:
+        # Origin to push to
+        remoteUrl: https://git.heroku.com/wj9.git
+        # Skip git hooks with --no-verify
+        skipHooks: true # optional
