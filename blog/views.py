@@ -22,6 +22,7 @@ def post(request, post_id):
         if form.is_valid():
             new_comment=form.save(commit=False)
             new_comment.post=post
+            new_comment.owner=request.user
             new_comment.save()
             return redirect('blog:post', post_id=post_id)
     

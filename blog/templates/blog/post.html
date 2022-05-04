@@ -1,15 +1,23 @@
 {% extends 'blog/base.html' %}
+{% load bootstrap4 %}
+{% block page_header %}
 <h3>{{post.name}}</h3> - <p>{{post.date_added}}</p>
+{% endblock page_header %}
 {% block content %}
 <p>{{text|linebreaks}}</p>
 <p>Comments: </p>
 {% for comment in comments %}
-<p>{{comment.text|linebreaks}}</p>
+<div class="card mb-3">
+    <h6 class="card-header">{{comment.owner.username}}-{{comment.date_added|date:'M d, Y'}}</h6>
+    <div class="card-body">{{comment.text|linebreaks}}</div>
+</div>
 {% endfor %}
 <p>Comment: </p>
 <form action="{% url 'blog:post' post.id %}" method="post" class="form" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% bootstrap_form form %}
+    {% buttons %}
     <button name="submit">Add comment</button>
+    {% endbuttons %}
 </form>
 {% endblock content %}
