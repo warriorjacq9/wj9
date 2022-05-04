@@ -30,4 +30,4 @@ jobs:
         python manage.py test
     - name: Git Heroku deploy
       run: |
-        HEROKU_API_KEY='b50f3b27-3356-42be-8f68-aadf2a313570' heroku run git pull https://github.com/warriorjacq9/wj9.git
+        HEROKU_API_KEY='b50f3b27-3356-42be-8f68-aadf2a313570' heroku run -a wj9 git pull https://github.com/warriorjacq9/wj9.git
