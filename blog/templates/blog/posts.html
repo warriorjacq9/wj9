@@ -13,4 +13,8 @@
     <li><h4>No posts yet!</h4></li>
     {% endfor %}
 </ul>
+
+{% if user.is_superuser %}
+<a role='button' href="{% url 'blog:new_post' %}">Add Post</a>
+{% endif %}
 {% endblock content %}

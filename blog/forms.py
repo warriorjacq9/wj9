@@ -5,9 +5,9 @@ from .models import Post, Comment
 class PostForm(forms.ModelForm):
     class Meta:
         model=Post
-        fields=['text','name']
+        fields=['name','text']
         labels={'text':'Content','name':'Name'}
-        widgets={'text':forms.Textarea(attrs={'cols':80}),'name':forms.Textarea(attrs={'cols':2})}
+        widgets={'text':forms.Textarea(attrs={'cols':80}),'name':forms.Textarea(attrs={'cols':2,'rows':2})}
 
 class CommentForm(forms.ModelForm):
     class Meta:
