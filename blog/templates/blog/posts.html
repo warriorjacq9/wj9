@@ -4,17 +4,16 @@
 <h1>Posts</h1>
 {% endblock page_header %}
 {% block content %}
-<ul>
+<ul class="list-group">
     {% for post in posts %}
-    <li><h4>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
         <a href="{% url 'blog:post' post.id %}">{{post.name}}</a>
-    </h4></li>
-    {% empty %}
-    <li><h4>No posts yet!</h4></li>
+    </li>
+    <br/>
     {% endfor %}
 </ul>
 
 {% if user.is_superuser %}
-<a role='button' href="{% url 'blog:new_post' %}">Add Post</a>
+<a class="btn btn-primary btn-sm " href="{% url 'blog:new_post' %}" role="button">New post</a>
 {% endif %}
 {% endblock content %}

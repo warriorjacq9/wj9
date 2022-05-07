@@ -58,7 +58,7 @@ ROOT_URLCONF = 'wj9.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['wj9/templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'wj9/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

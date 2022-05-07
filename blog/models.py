@@ -15,6 +15,10 @@ class Post(models.Model):
             return f"{self.text[50]}..."
         else:
             return f"{self.text}"
+    
+    @property
+    def view_count(self):
+        return PostLikes.objects.filter(post=self).count()
 
 class Comment(models.Model):
     post=models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -30,3 +34,8 @@ class Comment(models.Model):
             return f"{self.text}..."
         else:
             return self.text
+
+class PostLikes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)

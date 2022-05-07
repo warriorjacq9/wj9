@@ -4,7 +4,12 @@
 <h3>{{post.name}}</h3> - <p>{{post.date_added}}</p>
 {% endblock page_header %}
 {% block content %}
+<div class="pb-2 mb-2 border-bottom">
 <p>{{text|linebreaks}}</p>
+
+<a class="btn btn-primary btn-sm" href="#">Like</a>
+
+</div>
 <p>Comments: </p>
 {% for comment in comments %}
 <div class="card mb-3">
@@ -17,7 +22,7 @@
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
-    <button name="submit">Add comment</button>
+    <button name="submit" role="button" class="btn btn-light btn-sm">Add comment</button>
     {% endbuttons %}
 </form>
 {% endblock content %}
