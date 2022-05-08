@@ -20,7 +20,6 @@ def post(request, post_id):
         liked=True
     else:
         liked=False
-    print(liked)
 
     if request.method!='POST':
         form=CommentForm()
@@ -52,4 +51,4 @@ def new_post(request):
 
 def like_post(request, post_id):
     new_like, created=PostLikes.objects.get_or_create(user=request.user, post=Post.objects.get(id=post_id))
-    return post(request, post_id)
+    return redirect('blog:post', post_id=post_id)

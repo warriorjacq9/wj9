@@ -8,11 +8,11 @@
     {% for post in posts %}
     <li class="list-group-item d-flex justify-content-between align-items-center">
         <a href="{% url 'blog:post' post.id %}">{{post.name}}</a>
+        <span class="badge bg-primary rounded-pill">🖒{{post.view_count}}</span>
     </li>
     <br/>
     {% endfor %}
 </ul>
-
 {% if user.is_superuser %}
 <a class="btn btn-primary btn-sm " href="{% url 'blog:new_post' %}" role="button">New post</a>
 {% endif %}
