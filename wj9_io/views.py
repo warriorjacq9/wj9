@@ -28,4 +28,5 @@ def products(request):
 
 def product(request, product_id):
     product=DigitalProduct.objects.get(id=product_id)
-    return render(request, 'wj9_io/product.html', {'product':product})
+    filename=product.file.name.split('products/')[1]
+    return render(request, 'wj9_io/product.html', {'product':product,'filename':filename})
