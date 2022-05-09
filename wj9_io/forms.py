@@ -6,4 +6,4 @@ class DigitalProductForm(forms.ModelForm):
         model=DigitalProduct
         fields=['name','file']
         labels={'name':'Name', 'file':'File'}
-        widgets={'name':forms.Textarea(attrs={'cols':2,'rows':2}),'file':forms.FileField()}
+        widgets={'name':forms.Textarea(attrs={'cols':2,'rows':2}),'file':forms.ClearableFileInput()}

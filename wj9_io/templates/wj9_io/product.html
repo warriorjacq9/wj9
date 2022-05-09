@@ -1,0 +1,9 @@
+{% extends 'wj9/base.html' %}
+{% load bootstrap4 %}
+{% block page_header %}
+{% load static %}
+<h3>{{product.name}}</h3>
+{% endblock page_header %}
+{% block content %}
+<a class="btn btn-primary btn-lg" href="{{product.file.url}}">Download</a>
+{% endblock content %}
